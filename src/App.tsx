@@ -1,6 +1,11 @@
 import React from "react";
-import { HelloWorld } from "./components/HelloWorld/HelloWorld";
+import { BrowserRouter } from "react-router-dom";
+import { Cart } from "./components/Cart/Cart";
 
 export const App = (): JSX.Element => {
-  return <HelloWorld />;
+  return (
+    <BrowserRouter>
+      <Cart />
+    </BrowserRouter>
+  );
 };
