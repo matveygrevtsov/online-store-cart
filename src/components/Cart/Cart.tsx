@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import { Link } from "react-router-dom";
 import { Avatar, Button, List } from "antd";
 import { DeleteOutlined } from "@ant-design/icons";
@@ -69,7 +69,7 @@ export const MOCK_PRODUCTS: Product[] = [
   },
 ];
 
-export const Cart = () => {
+const Cart: FC = () => {
   return (
     <>
       <Link to="/">Вернуться</Link>
@@ -94,3 +94,5 @@ export const Cart = () => {
     </>
   );
 };
+
+export default Cart;
