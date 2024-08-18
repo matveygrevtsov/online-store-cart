@@ -5,7 +5,7 @@ import Cart from "./components/Cart/Cart";
 export const App = (): JSX.Element => {
   return (
     <BrowserRouter>
-      <Cart />
+      <Cart products={[]} />
     </BrowserRouter>
   );
 };
