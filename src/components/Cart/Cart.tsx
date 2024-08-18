@@ -1,89 +1,29 @@
 import React, { FC } from "react";
 import { Link } from "react-router-dom";
-import { Avatar, Button, List } from "antd";
-import { DeleteOutlined } from "@ant-design/icons";
+import { Avatar, List } from "antd";
+import { ProductCounter } from "../../remoteComponents/ProductCounter/ProductCounter";
 
 interface Product {
-  id: string;
+  id: number;
   description: string;
   price: number;
   image: string;
 }
 
-export const MOCK_PRODUCTS: Product[] = [
-  {
-    id: "0",
-    description: "description",
-    price: 300,
-    image:
-      "https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png",
-  },
-  {
-    id: "0",
-    description: "description",
-    price: 300,
-    image:
-      "https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png",
-  },
-  {
-    id: "0",
-    description: "description",
-    price: 300,
-    image:
-      "https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png",
-  },
-  {
-    id: "0",
-    description: "description",
-    price: 300,
-    image:
-      "https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png",
-  },
-  {
-    id: "0",
-    description: "description",
-    price: 300,
-    image:
-      "https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png",
-  },
-  {
-    id: "0",
-    description: "description",
-    price: 300,
-    image:
-      "https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png",
-  },
-  {
-    id: "0",
-    description: "description",
-    price: 300,
-    image:
-      "https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png",
-  },
-  {
-    id: "0",
-    description: "description",
-    price: 300,
-    image:
-      "https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png",
-  },
-];
+interface IProps {
+  products: Product[];
+}
 
-const Cart: FC = () => {
+const Cart: FC<IProps> = ({ products }) => {
   return (
     <>
       <Link to="/">Вернуться</Link>
       <List
         style={{ maxWidth: "600px", width: "100%" }}
         itemLayout="horizontal"
-        dataSource={MOCK_PRODUCTS}
+        dataSource={products}
         renderItem={(product) => (
-          <List.Item
-            actions={[
-              <Button icon={<DeleteOutlined />} />,
-              // Если идёт загрузка, отображать <Spin size="small" />
-            ]}
-          >
+          <List.Item actions={[<ProductCounter productId={product.id} />]}>
             <List.Item.Meta
               avatar={<Avatar src={product.image} />}
               description={product.description}

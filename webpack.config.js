@@ -5,11 +5,18 @@ const deps = require("./package.json").dependencies;
 
 const OUTPUT_FOLDER_NAME = path.resolve(__dirname, "dist"); // Папка, куда всё заливаться сбилженный проект.
 
+const mainUrl = process.env.MAIN_URL
+  ? process.env.MAIN_URL
+  : "http://localhost:3000";
+
 const moduleFederationConfig = {
   name: "cart",
   filename: "remoteEntry.js",
   exposes: {
     "./Cart": "./src/components/Cart/Cart",
+  },
+  remotes: {
+    main: `main@${mainUrl}/remoteEntry.js`,
   },
   shared: {
     ...deps,
